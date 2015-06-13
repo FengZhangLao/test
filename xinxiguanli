@@ -1,0 +1,139 @@
+1 安全模块
+  
+printf("                         请输入用户名，\n");
+	scanf("%s",x);
+	if(strcmp(x,y)==0) 
+	{
+	printf("                         请输入密码，\n");
+    scanf("%d",&ma);
+  	while (ma==123456)
+通过比较语句 来判定输入人名和密码的正确  如果正确进入菜单模块；
+2	菜单模块
+通过while语句
+给出信息提示；
+清屏；
+绘制菜单（包含输入，浏览，查询，修改，删除，排序，保存，退出）；
+提示菜单选择并读入到变量；
+根据读入变量的值调用不同的模块函数；
+3	信息录入模块
+打开文件
+While() 
+{  清屏；
+   按照提示输入各种信息；
+    While
+     显示各种信息；
+通过选择1.确认并继续  2.重新填写  3.放弃并返回  4.确认并返回  
+选择四种功能；
+}
+}
+4	信息浏览模块
+打开文件
+While（）
+{   清屏；
+    用for语句依次按照顺序输出学生信息
+    通过选择可以翻页 1.上一页 2.下一页 0.退出
+}
+5	信息查询  
+While()
+{ 通过菜单式的选择 是学号查询 还是姓名
+    printf("******学生信息管理系统******");
+	printf("\n----------检    索----------");
+	printf("\n您想要：");
+	printf("\n       1.按学号检索");
+	printf("\n       2.按姓名检索");
+	printf("\n       3.返回主菜单");
+printf("\n****************************\n");
+}
+如果选择学号进入学号模块
+通过输入学号  
+If（ 学号存在继续）
+  {输出学生信息
+}
+        
+Else 输出无此学生
+如果选择姓名进入姓名模块
+If（根据比较姓名判断学生是否存在）
+  {输出学生信息
+}
+        
+Else 输出无此学生
+6	删除模块
+      while( 继续删除 )
+{
+ 
+ 提示并读入待删除的学生的学生号；
+显示要删除的信息
+}
+删除成功
+7	信息修改模块
+输入要修改学生信息的学号：
+If （判断是否有此学生）
+{  菜单形式显示要修改的项目
+printf("\n1.姓名 2.年龄 3.性别 4.出生年月 5.地址 6.电话 7.E-mail \n");
+		     printf("\n8.数学 9.英语 \n");
+}
+Swich()
+{ 选择要修改的项目进行修改
+}
+8	打开文件模块
+   void fileopen()
+{
+	FILE *fp;
+	int n;
+	if((fp=fopen("data","r+"))==NULL)
+	fp=fopen("data","w+");
+	for(n=0;n<100;n++)
+	fread(&stu[n],sizeof(struct student),1,fp);
+	fread(&stunum,4,1,fp);
+	fclose(fp);
+}
+9	保存文件模块
+  void filesave()
+{
+	int n;
+	FILE *fp;
+	fp=fopen("data","r+");
+	for(n=0;n<100;n++)
+	fwrite(&stu[n],sizeof(struct student),1,fp);
+	fwrite(&stunum,4,1,fp);
+	fclose(fp);
+    printf("保存成功！press Enter to continue..");
+	getch();
+}
+10	退出模块
+     case '8':ma=0;break; 
+用的是跳出while语句 
+回到安全模块
+11	排序模块 
+通过 冒泡排序法 
+ for(m=0;m<y-1;m++) 
+        for(x=m+1;x<y;x++)
+           if(stu[m].sum<stu[x].sum)
+		   {
+			        stu[99]=stu[m];
+                    stu[m]=stu[x];
+                    stu[x]=stu[99];
+                    stu[99].id=stu[x].id ;
+                    stu[x].id =stu[m].id;
+                    stu[m].id =stu[99].id ;
+
+		   }
+printf("排序后的顺序为:\n");
+然后显示排序好后的学生信息；
+ 
+学生基本信息结构体是
+struct student
+{
+	int id;
+	char name[30];
+	int age;
+	char sex[6];
+	char birthday[12];
+	char add[80];
+	char tel[15];
+	char email[25];
+	int  math;
+    int  english;
+	int  sum;
+}stu[100]
+
